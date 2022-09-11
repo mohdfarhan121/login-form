@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="center">
+        <h1 style="font-family:sans-serif"> Submit Page </h1>
+        <form action="https://sheetdb.io/api/v1/fwk4jkdy8omde" method="post" id="sheetdb-form">
+            <div class="txt_field">
+                <input type="text" name="data[Username]" required>
+                <span></span>
+                <label>Username</label>
+            </div>
+
+            <div class="txt_field">
+                <input type="text" name="data[Email]" required>
+                <span></span>
+                <label>Email</label>
+            </div>
+
+            <div class="txt_field">
+                <input type="text" name="data[Mobile Number]" required>
+                <span></span>
+                <label>Mobile Number</label>
+            </div>
+
+            <div class="pass">Forgot Password?</div>
+            <input type="submit" value="Submit">
+            <div class="signup_link">
+                Not a member? <a href="#">Signup</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var form = document.getElementById('sheetdb-form');
+    form.addEventListener("submit", e=> {
+        e.preventDefault();
+        fetch(form.action, {
+            method : "POST",
+            body : new FormData(document.getElementById("sheetdb-form")),
+        }).then(
+            response1 => response1.json()
+        ).then((html) => {
+            window.open('submit_page.html', '_blank');
+        });
+    });
+
+    </script>
+</body>
+</html>
